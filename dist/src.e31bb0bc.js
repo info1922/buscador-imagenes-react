@@ -29605,7 +29605,96 @@ function _asyncToGenerator(fn) {
 
 module.exports = _asyncToGenerator;
 module.exports["default"] = module.exports, module.exports.__esModule = true;
-},{}],"../node_modules/regenerator-runtime/runtime.js":[function(require,module,exports) {
+},{}],"../node_modules/@babel/runtime/helpers/arrayWithHoles.js":[function(require,module,exports) {
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+module.exports = _arrayWithHoles;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+},{}],"../node_modules/@babel/runtime/helpers/iterableToArrayLimit.js":[function(require,module,exports) {
+function _iterableToArrayLimit(arr, i) {
+  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+
+  if (_i == null) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+
+  var _s, _e;
+
+  try {
+    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+module.exports = _iterableToArrayLimit;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+},{}],"../node_modules/@babel/runtime/helpers/arrayLikeToArray.js":[function(require,module,exports) {
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+module.exports = _arrayLikeToArray;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+},{}],"../node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js":[function(require,module,exports) {
+var arrayLikeToArray = require("./arrayLikeToArray.js");
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return arrayLikeToArray(o, minLen);
+}
+
+module.exports = _unsupportedIterableToArray;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+},{"./arrayLikeToArray.js":"../node_modules/@babel/runtime/helpers/arrayLikeToArray.js"}],"../node_modules/@babel/runtime/helpers/nonIterableRest.js":[function(require,module,exports) {
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+module.exports = _nonIterableRest;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+},{}],"../node_modules/@babel/runtime/helpers/slicedToArray.js":[function(require,module,exports) {
+var arrayWithHoles = require("./arrayWithHoles.js");
+
+var iterableToArrayLimit = require("./iterableToArrayLimit.js");
+
+var unsupportedIterableToArray = require("./unsupportedIterableToArray.js");
+
+var nonIterableRest = require("./nonIterableRest.js");
+
+function _slicedToArray(arr, i) {
+  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || unsupportedIterableToArray(arr, i) || nonIterableRest();
+}
+
+module.exports = _slicedToArray;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+},{"./arrayWithHoles.js":"../node_modules/@babel/runtime/helpers/arrayWithHoles.js","./iterableToArrayLimit.js":"../node_modules/@babel/runtime/helpers/iterableToArrayLimit.js","./unsupportedIterableToArray.js":"../node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js","./nonIterableRest.js":"../node_modules/@babel/runtime/helpers/nonIterableRest.js"}],"../node_modules/regenerator-runtime/runtime.js":[function(require,module,exports) {
 var define;
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
@@ -38637,7 +38726,11 @@ exports.default = void 0;
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
+
+var _react = require("react");
 
 var _formik = require("formik");
 
@@ -38648,8 +38741,18 @@ var _jsxRuntime = require("react/jsx-runtime");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-    children: /*#__PURE__*/(0, _jsxRuntime.jsx)("header", {
+  var _useState = (0, _react.useState)([]),
+      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+      fotos = _useState2[0],
+      setFotos = _useState2[1];
+
+  var open = function open(url) {
+    return window.open(url);
+  };
+
+  console.log('Fotos ', fotos);
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("header", {
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_formik.Formik, {
         initialValues: {
           search: ''
@@ -38675,8 +38778,8 @@ var App = function App() {
 
                   case 5:
                     data = _context.sent;
-                    // llamar animationPlayState: 
-                    console.log(data);
+                    setFotos(data.results); // llamar animationPlayState: 
+                    // console.log(data)
 
                   case 7:
                   case "end":
@@ -38696,13 +38799,30 @@ var App = function App() {
           })
         })
       })
-    })
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: "container",
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        className: "center",
+        children: fotos.map(function (foto) {
+          return /*#__PURE__*/(0, _jsxRuntime.jsxs)("article", {
+            onClick: function onClick() {
+              return open(foto.links.html);
+            },
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
+              src: foto.urls.regular
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+              children: [foto.description, foto.alt_description].join(' - ')
+            })]
+          }, foto.id);
+        })
+      })
+    })]
   });
 };
 
 var _default = App;
 exports.default = _default;
-},{"@babel/runtime/helpers/asyncToGenerator":"../node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/regenerator":"../node_modules/@babel/runtime/regenerator/index.js","formik":"../node_modules/formik/dist/formik.esm.js","./header.css":"header.css","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"index.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/asyncToGenerator":"../node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","@babel/runtime/regenerator":"../node_modules/@babel/runtime/regenerator/index.js","react":"../node_modules/react/index.js","formik":"../node_modules/formik/dist/formik.esm.js","./header.css":"header.css","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
